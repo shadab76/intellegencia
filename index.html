@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: "#da373d",
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+            poppins: ["Poppins", "sans-serif"],
+            openSans: ["Open Sans", "sans-serif"],
+            sourceSans: ["Source Sans 3", "sans-serif"],
+            oswald: ["Oswald", "sans-serif"],
+          },
+          container: {
+            center: true, // Center the container
+            //   padding: "1rem", // Add padding to the container
+            screens: {
+              xl: "1710px", // Custom width for 'xl' breakpoint
+            },
+          },
+          boxShadow: {
+            "3xl": "0px 3px 6px #00000042",
+          },
+          screens: {
+            "2xl": "1440px", // Define a custom breakpoint for 1440px
+            "xl1440": '1440px',
+          },
+          gridTemplateColumns: {
+            "custom-desktop": "646px 1fr", // Custom template
+          },
+          backgroundImage: {
+            'footer-gradient': 'linear-gradient(108deg, #141533 0%, #000000 100%)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body>
+  <header class="bg-[#070D2D] text-white sticky top-0 z-20">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <!-- Logo Section -->
+      <div class="text-xl font-bold">
+        <img src="./assets/images/icons/logo.svg" alt="Logo" class="h-16 w-auto" />
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex space-x-10 items-center py-4">
+        <a href="#" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans">About Intelegencia</a>
+        <a href="#" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans relative">Services <span
+            class="ml-2 rotate-90 absolute">&#10140;</span></a>
+        <a href="#" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans pl-6">Solutions</a>
+        <a href="#" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans">Digital</a>
+        <a href="#" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans">Platforms</a>
+        <a href="#" id="searchBtn" class="hover:text-[#2494ea] text-lg 2xl:text-2xl font-normal font-openSans">
+          <img src="./assets/images/icons/Icon ionic-ios-search.svg" class="h-7 w-7" alt="Search" />
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <div class="lg:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <img src="./assets/images/icons/Icon feather-menu.svg" class="h-7 w-7" alt="Menu" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu"
+      class="hidden lg:hidden bg-[#070D2D] px-6 overflow-hidden transition-all duration-300 ease-in-out">
+      <nav class="space-y-4 py-4">
+        <a href="#" class="block hover:text-blue-400">About Intelegencia</a>
+        <a href="#" class="block hover:text-blue-400">Services</a>
+        <a href="#" class="block hover:text-blue-400">Solutions</a>
+        <a href="#" class="block hover:text-blue-400">Digital</a>
+        <a href="#" class="block hover:text-blue-400">Platforms</a>
+        <a href="#" id="searchBtn" class="block hover:text-blue-400">
+          <img src="./assets/images/icons/Icon ionic-ios-search.svg" class="h-7 w-7 inline" alt="Search" />
+        </a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- Search Popup -->
+  <div id="searchPopup"
+    class="fixed inset-0 bg-gray-800 bg-opacity-30 backdrop-blur-lg flex items-center justify-center opacity-0 scale-90 hidden transition-all duration-300 z-50">
+    <div
+      class="bg-white absolute top-[10%] bg-opacity-20 backdrop-blur-md border border-gray-300 border-opacity-30 rounded-lg shadow-lg w-full max-w-md transform transition-transform duration-300 p-6">
+      <div class="">
+        <input type="text" placeholder="Type your search..."
+          class="w-full px-4 py-2 border border-gray-300 rounded focus:ring focus:ring-blue-200 focus:outline-none bg-gray-50 bg-opacity-80" />
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Hero Section -->
+  <section class="banner bg-[#070D2D] text-white py-16">
+    <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper"
+      speed="600" parallax="true" pagination="true" pagination-clickable="true">
+      <swiper-slide>
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center">
+          <!-- Text Content (65% width) -->
+          <div class="text-container lg:order-1 order-2 mb-8 lg:mb-0 lg:basis-[65%]">
+            <h1
+              class="text-2xl md:text-4xl mt-10 lg:mt-0 lg:text-6xl font-semibold font-poppins mb-7 text-center lg:text-start"
+              data-swiper-parallax="-500">
+              Proven
+              <span class="font-extralight underline">customer experience</span>
+              partner that clients trust globally
+            </h1>
+            <p class="text-lg 2xl:text-xl lg:text-3xl mb-14 font-light font-openSans text-center lg:text-start"
+              data-swiper-parallax="-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <a href="#"
+              class="animated_btn border-0 flex mx-auto md:mx-auto lg:ml-0 gap-2 2xl:gap-x-4 items-center 2xl:justify-center justify-between  2xl:w-[238px] w-[170px] 2xl:text-2xl font-bold 2xl:font-bold font-openSans"
+              data-swiper-parallax="-200">
+              Explore Now
+              <svg class="w-[34px] lg:w-[40px]" xmlns="http://www.w3.org/2000/svg" width="current" height="current"
+                viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M16.3153 16.6681C15.9247 17.0587 15.9247 17.6918 16.3153 18.0824C16.7058 18.4729 17.339 18.4729 17.7295 18.0824L22.3951 13.4168C23.1761 12.6357 23.1761 11.3694 22.3951 10.5883L17.7266 5.9199C17.3361 5.52938 16.703 5.52938 16.3124 5.91991C15.9219 6.31043 15.9219 6.9436 16.3124 7.33412L19.9785 11.0002L2 11.0002C1.44772 11.0002 1 11.4479 1 12.0002C1 12.5524 1.44772 13.0002 2 13.0002L19.9832 13.0002L16.3153 16.6681Z"
+                  fill="#fff" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Image Section (35% width) -->
+          <div class="image-container order-1 lg:order-2 lg:basis-[35%] relative w-full lg:w-auto">
+            <img data-swiper-parallax="-500" src="./assets/images/960x0@2x.png" alt="Hero Image"
+              class="w-full h-auto lg:w-auto z-10 relative" />
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center">
+          <!-- Text Content (65% width) -->
+          <div class="text-container lg:order-1 order-2 mb-8 lg:mb-0 lg:basis-[65%]">
+            <h1
+              class="text-2xl md:text-4xl mt-10 lg:mt-0 lg:text-6xl font-semibold font-poppins mb-7 text-center lg:text-start"
+              data-swiper-parallax="-500">
+              Proven
+              <span class="font-extralight underline">customer experience</span>
+              partner that clients trust globally
+            </h1>
+            <p class="text-lg 2xl:text-xl lg:text-3xl mb-14 font-light font-openSans text-center lg:text-start"
+              data-swiper-parallax="-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <a href="#"
+              class="animated_btn flex mx-auto md:mx-auto lg:ml-0 gap-x-4 items-center md:w-[238px] w-60 2xl:text-2xl font-bold font-openSans"
+              data-swiper-parallax="-200">
+              Explore Now
+              <span class="text-4xl pb-2 font-bold">&#10230;</span>
+            </a>
+          </div>
+
+          <!-- Image Section (35% width) -->
+          <div class="image-container order-1 lg:order-2 lg:basis-[35%] relative w-full lg:w-auto">
+            <img data-swiper-parallax="-500" src="./assets/images/960x0@2x.png" alt="Hero Image"
+              class="w-full h-auto lg:w-auto z-10 relative" />
+          </div>
+        </div>
+      </swiper-slide>
+      <swiper-slide>
+        <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center">
+          <!-- Text Content (65% width) -->
+          <div class="text-container lg:order-1 order-2 mb-8 lg:mb-0 lg:basis-[65%]">
+            <h1
+              class="text-2xl md:text-4xl mt-10 lg:mt-0 lg:text-6xl font-semibold font-poppins mb-7 text-center lg:text-start"
+              data-swiper-parallax="-500">
+              Proven
+              <span class="font-extralight underline">customer experience</span>
+              partner that clients trust globally
+            </h1>
+            <p class="text-lg 2xl:text-xl lg:text-3xl mb-14 font-light font-openSans text-center lg:text-start"
+              data-swiper-parallax="-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+            <a href="#"
+              class="animated_btn flex mx-auto md:mx-auto lg:ml-0 gap-x-4 items-center md:w-[238px] w-60 2xl:text-2xl font-bold font-openSans"
+              data-swiper-parallax="-200">
+              Explore Now
+              <span class="text-4xl pb-2 font-bold">&#10230;</span>
+            </a>
+          </div>
+
+          <!-- Image Section (35% width) -->
+          <div class="image-container order-1 lg:order-2 lg:basis-[35%] relative w-full lg:w-auto">
+            <img data-swiper-parallax="-500" src="./assets/images/960x0@2x.png" alt="Hero Image"
+              class="w-full h-auto lg:w-auto z-10 relative" />
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+    <!-- Hero Section -->
+  </section>
+
+  <!-- Achivement Section -->
+  <section class="achivement mt-0 xl:mt-[-57px]">
+    <div class="container mx-auto">
+      <div
+        class="card border-right shadow-[0px_3px_6px_#00000042] border border-white flex flex-wrap 2xl:flex-nowrap lg:flex-wrap items-center z-10 relative w-full">
+        <div class="px-[36px] grow py-[21px] h-full border-r border-solid border-white min-w-[200px]">
+          <h5 class="font-semibold text-[33px] mb-3 font-poppins text-white">
+            120+
+          </h5>
+          <p class="font-openSans text-white leading-9 text-[26px] tracking-[0.26px]">
+            Global Customers
+          </p>
+        </div>
+        <div
+          class="px-[36px] grow py-[21px] h-full border-t sm:border-t-0 border-r border-solid border-white min-w-[200px]">
+          <h5 class="font-semibold text-[33px] mb-3 font-poppins text-white">
+            7 Offices
+          </h5>
+          <p class="font-openSans text-white leading-9 text-[26px] tracking-[0.26px]">
+            in 3 continents
+          </p>
+        </div>
+        <div
+          class="px-[36px] grow py-[21px] h-full border-t lg:border-t-0 xl:border-r border-solid border-white min-w-[200px]">
+          <h5 class="font-semibold text-[33px] mb-3 font-poppins text-white">
+            1200+
+          </h5>
+          <p class="font-openSans text-white leading-9 text-[26px] tracking-[0.26px]">
+            Distributed Workforce
+          </p>
+        </div>
+        <div
+          class="flex flex-col lg:text-left border-t 2xl:border-t-0 border-solid border-white text-center grow lg:flex-row items-center lg:items-start lg:items-start gap-[44px] px-[36px] py-[21px] h-full min-w-[200px]">
+          <div>
+            <h5 class="font-openSans text-white leading-9 text-[26px] tracking-[0.26px]">
+              Certificates & Awards:
+            </h5>
+            <p class="font-openSans text-white font-semibold leading-9 text-[31px]">
+              ISO 27001:2021 Certified PCI DSS Certified
+            </p>
+          </div>
+          <img class="sm:w-50 sm:h-auto lg:w-auto 2xl:h-[150px]" src="./assets/images/image.png"
+            alt="Certificate Badge" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="container mx-auto py-12">
+    <div class="Technology_layout gap-0 xl:h-[416px] items-center">
+      <!-- Left Section -->
+      <div
+        class="h-full px-[60px] py-[65px] flex items-end justify-center items-start bg-[#DFDFDF] relative overflow-hidden">
+        <span class="blog_btn h-[75px]"></span>
+        <h2
+          class=" text-4xl :text-[50px] font-normal text-center tracking-[0.25px] font-poppins leading-[50px] text-[#000000]">
+          What We Offer</h2>
+      </div>
+
+      <!-- Card 1 -->
+      <div class="card_1 relative h-full text-white p-6">
+        <div
+          class="absolute px-5 md:px-[32px] 2xl:w-[359px] w-[70%] md:w-[80%] lg:w-[70%] py-[29px] z-10 top-[-10px] left-2 2xl:left-5 bg-[#2494EA] bg-opacity-[65%]">
+          <h3
+            class="text-lg md:text-2xl 2xl:text-[30px] font-poppins 2xl:leading-[40px] font-normal mb-5 2xl:mb-[15px]">
+            Technology & Digital Experience
+          </h3>
+          <ul class="space-y-2 pt-0 2xl:pt-[24px] ">
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Digital Transformation</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Data Sciences/Engineering</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Cloud Infrastructure</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              eCommerce Platforms</li>
+          </ul>
+          <div class="absolute bottom-0 right-[-63px] 2xl:right-[-78px]">
+            <button
+              class="bg-black bg-opacity-30 hover:bg-[#2494EA] hover:bg-opacity-[65%] text-white px-2 2xl:px-4 py-2 text-sm flex flex-col items-center">
+              Explore <br> More
+              <span>&#10142;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card_2 relative h-full text-white p-6">
+        <div
+          class="absolute px-5 md:px-[32px] 2xl:w-[450px] w-[70%] md:w-[80%] lg:w-[70%] py-[29px] z-10 bottom-[-10px] left-2 2xl:left-5 bg-[#FFC91A] bg-opacity-[65%]">
+          <h3 class="text-lg md:text-2xl 2xl:text-[30px] font-poppins 2xl:leading-[40px] font-normal mb-[15px]">
+            Customer Experience / BPO & E-Commerce
+          </h3>
+          <ul class="space-y-2 pt-0 2xl:pt-[24px]">
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Digital Transformation</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Data Sciences/Engineering</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              Cloud Infrastructure</li>
+            <li
+              class="font-openSans 2xl:text-[20px] md:text-[18px] text-sm  2xl:leading-[50px] tracking-[0.4px] text-white">
+              eCommerce Platforms</li>
+          </ul>
+          <div class="absolute top-0 right-[-63px] 2xl:right-[-78px]">
+            <button
+              class="bg-black bg-opacity-30 hover:bg-[#FFC91A] hover:bg-opacity-[65%] text-white px-2 2xl:px-4 py-2 text-sm flex flex-col items-center">
+              Explore <br> More
+              <span>&#10142;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- blogs Section -->
+  <section class="container mx-auto my-8 px-4 relative">
+    <!-- Header Section -->
+    <div class="flex justify-between items-end mb-6 absolute top-0 right-4">
+      <div
+        class="2xl:h-[134px] xl:h-[100px] relative 2xl:w-[159px] w-[100px] bg-[#DFDFDF] px-2.5 2xl:pb-4 py-2 flex items-end justify-center">
+        <div class="blog_btn"></div>
+
+        <h2 class="2xl:text-5xl text-2xl font-semibold 2xl:font-medium font-openSans z-10">Blog's</h2>
+      </div>
+      <a href="#" class="bg-[#2494EA] text-white font-inter 2xl:py-2.5 py-1 px-1.5 text-lg text-center font-normal">View
+        All
+        <br />
+        →</a>
+    </div>
+
+    <!-- Grid Section -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-28 md:pt-20 lg:pt-0">
+      <!-- Card 1 -->
+      <div class="bg-white mt-0 lg:mt-6 overflow-hidden transition-shadow duration-300">
+        <div class="">
+          <h3 class="text-2xl tracking-[0.48px] font-poppins font-semibold mb-0">
+            DIGITAL
+          </h3>
+          <p class="text-[#323232] mb-3.5 text-xl font-openSans">
+            Lorem ipsum dummy text here set amet srreewess ertyut sed ubnt
+            concrtites set...
+          </p>
+        </div>
+        <img src="./assets/images/digital.png" alt="Digital" class="w-full h-48 object-cover" />
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white mt-0 lg:mt-14 overflow-hidden transition-shadow duration-300">
+        <div class="">
+          <h3 class="text-2xl tracking-[0.48px] font-poppins font-semibold mb-0">
+            HUMAN RESOURCE
+          </h3>
+          <p class="text-[#323232] mb-3.5 text-xl font-openSans">
+            Lorem ipsum dummy text here set amet srreewess ertyut sed ubnt
+            concrtites set...
+          </p>
+        </div>
+        <img src="./assets/images/human-resouces.png" alt="Human Resource" class="w-full h-48 object-cover" />
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white mt-0 lg:mt-24 overflow-hidden transition-shadow duration-300">
+        <div class="">
+          <h3 class="text-2xl tracking-[0.48px] font-poppins font-semibold mb-0">
+            SALESFORCE
+          </h3>
+          <p class="text-[#323232] mb-3.5 text-xl font-openSans">
+            Lorem ipsum dummy text here set amet srreewess ertyut sed ubnt
+            concrtites set...
+          </p>
+        </div>
+        <img src="./assets/images/salesforce.png" alt="Salesforce" class="w-full h-48 object-cover" />
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white mt-0 lg:mt-36 overflow-hidden transition-shadow duration-300">
+        <div class="">
+          <h3 class="text-2xl tracking-[0.48px] font-poppins font-semibold mb-0">
+            DEVOPS
+          </h3>
+          <p class="text-[#323232] mb-3.5 text-xl font-openSans">
+            Lorem ipsum dummy text here set amet srreewess ertyut sed ubnt
+            concrtites set...
+          </p>
+        </div>
+        <img src="./assets/images/devops.png" alt="DevOps" class="w-full h-48 object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership Section -->
+  <section class="bg-[#F2F2F2] py-8">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <h2 class="text-2xl font-normal text-left text-[#323232 ] tracking-[0.25px] mb-10">
+        In Partnership With
+      </h2>
+
+      <!-- Logos Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 items-left">
+        <!-- Microsoft -->
+        <img src="./assets/images/brand1.png" alt="Microsoft" class="h-12 object-contain" />
+        <!-- Salesforce -->
+        <img src="./assets/images/brand2.png" alt="Salesforce" class="h-12 object-contain" />
+        <!-- Synchronoss -->
+        <img src="./assets/images/brand3.png" alt="Synchronoss" class="h-12 object-contain" />
+        <!-- Amazon -->
+        <img src="./assets/images/brand4.png" alt="Amazon" class="h-12 object-contain" />
+        <!-- Talkdesk -->
+        <img src="./assets/images/icons/talkdesk.svg" alt="Talkdesk" class="h-12 object-contain" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="flex flex-col h-full lg:h-[737px] md:flex-row items-center bg-[#050505]">
+    <!-- Image Section -->
+    <div class="w-full md:w-1/2 md:h-[737px] h-full overflow-hidden">
+      <img src="./assets/images/steve-johnson-Xx_d26R37E4-unsplash.png" alt="Abstract painting"
+        class="w-full h-full object-cover object-center" />
+    </div>
+
+    <!-- Content Section -->
+    <div class="w-full md:w-1/2 bg-black h-full p-8 md:px-10 xl:px-20 2xl:px-[150px]">
+      <div class="flex flex-col items-left justify-center h-full">
+        <p class="text-[#93D522] text-2xl font-semibold uppercase font-oswald mb-3.5">
+          Insights
+        </p>
+        <h1 class="text-xl md:text-3xl text-white xl:text-[40px] xl:leading-[65px] font-semibold mb-[25px]">
+          Consectetur adipisicing acilis distinctio fuga deserunt!
+        </h1>
+        <p class="text-white font-[300] text-lg md:text-2xl md:leading-[40px] mb-10 md:mb-[90px]">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis
+          distinctio fuga deserunt! Iste ohicabo ratione molestias assumenda
+          nesciunt…
+        </p>
+        <a href="#" class="text-green-500 font-semibold flex items-center justify-end group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="63" height="42.018" class="md:h-[42px] md:w-[63px] w-[40px]"
+            viewBox="0 0 63 42.018">
+            <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward"
+              d="M48.051,12.056a2.859,2.859,0,0,0-.022,4.026l13.3,13.327H10.7a2.845,2.845,0,0,0,0,5.689H61.312l-13.3,13.327a2.88,2.88,0,0,0,.022,4.026,2.833,2.833,0,0,0,4-.022L70.065,34.267h0a3.2,3.2,0,0,0,.591-.9,2.715,2.715,0,0,0,.219-1.094,2.852,2.852,0,0,0-.81-1.991L52.034,12.122A2.788,2.788,0,0,0,48.051,12.056Z"
+              transform="translate(-7.875 -11.252)" fill="#93d522" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Client Section -->
+  <section class="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div
+      class="ourClient grid grid-cols-1 md:grid-cols-1 xl:grid-cols-1 2xl:[grid-template-columns:646px_1fr] gap-[33px] items-start">
+      <!-- Left Section -->
+      <div class="h-auto">
+        <h2 class="text-2xl font-normal leading-[71px] text-[#323232] font-poppins tracking-[1px]">
+          What Our Clients Say
+        </h2>
+        <div
+          class="bg-[#F2F2F2] shadow-lg rounded-lg px-5 sm:px-10 md:px-20 lg:px-[65px] pt-[75px] pb-[25px] h-full relative">
+          <div class="flex justify-end gap-6 mb-[62px]">
+            <button
+              class="border-[3px] border-solid border-[#b4b4b4] bg-transparent h-[47px] w-[47px] flex justify-center items-center rounded-full p-2">
+              <span class="text-3xl text-[#b4b4b4] rotate-180">&#10140;</span>
+            </button>
+            <button
+              class="border-[3px] border-solid border-[#b4b4b4] bg-transparent h-[47px] w-[47px] flex justify-center items-center rounded-full p-2">
+              <span class="text-3xl text-[#b4b4b4]">&#10140;</span>
+            </button>
+          </div>
+          <blockquote
+            class="text-[#000000] font-inter font-light text-justify 2xl:text-left tracking-[0.6px] text-xl md:text-3xl md:leading-[45px] 2xl:text-[30px] mb-[65px]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="333" height="284.705"
+              class="absolute h-auto w-full sm:h-[50%] sm:w-[50%] md:h-auto md:w-auto top-0 left-0"
+              viewBox="0 0 333 284.705">
+              <path id="Icon_open-double-quote-serif-left" data-name="Icon open-double-quote-serif-left"
+                d="M142.352,0C64.059,0,0,64.059,0,142.352V284.7H142.352V142.352h-94.9a94.574,94.574,0,0,1,94.9-94.9ZM333,0C254.706,0,190.648,64.059,190.648,142.352V284.7H333V142.352H238.1a94.574,94.574,0,0,1,94.9-94.9Z"
+                opacity="0.05" />
+            </svg>
+
+            We started working with Intelegencia 5 years ago on a single
+            project. The outcome of the initial project (and subsequent ones)
+            were successful so I made the decision to migrate my entire
+            domestic software development to offshore. The integrity of Perry
+            and his team has been impeccable and we are a better company as a
+            result of this development partnership.
+          </blockquote>
+          <p class="text-[#2494EA] text-[30px] font-bold font-oswald text-end">Chris</p>
+          <p class="text-[#000000] text-[24px] font-sourceSans font-extralight text-end">
+            President and CEO, <br />
+            PrintReach, USA
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="">
+        <h2 class="text-2xl font-normal leading-[71px] text-[#323232] font-poppins tracking-[1px]">
+          Our Locations
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 h-full gap-4">
+          <!-- Location 1 -->
+          <div class="relative h-full 2xl:h-[435px] group">
+            <img src="./assets/images/usa.png" alt="USA" class="w-full h-full object-cover object-center rounded-lg" />
+            <div
+              class="absolute w-full bg-black bg-opacity-50 flex items-center justify-center rounded-lg h-16 bottom-0 left-0 group-hover:opacity-0 transition-opacity duration-300">
+              <p class="text-white text-[35px] font-normal">USA</p>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 w-[70%] h-[65%] p-6 bg-blue-700 bg-opacity-0 flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 group-hover:bg-opacity-50 transition-all duration-300">
+              <div class="text-left text-white">
+                <h5 class="font-normal mb-3 text-2xl font-poppins lg:text-[35px]">USA</h5>
+                <p class="lg:text-[24px] text-xl font-openSans lg:leading-[45px]">
+                  40 West Evergreen Ave, Suite 101A, Philadelphia, PA 19118
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Location 2 -->
+          <div class="relative h-full 2xl:h-[435px] group">
+            <img src="./assets/images/Philippines.png" alt="Philippines"
+              class="w-full h-full object-cover rounded-lg" />
+            <div
+              class="absolute w-full bg-black bg-opacity-50 flex items-center justify-center rounded-lg h-16 bottom-0 left-0 group-hover:opacity-0 transition-opacity duration-300">
+              <p class="text-white text-[35px] font-normal">Philippines</p>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 w-[70%] h-[65%] p-6 bg-blue-700 bg-opacity-0 flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 group-hover:bg-opacity-50 transition-all duration-300">
+              <div class="text-left text-white">
+                <h5 class="font-normal mb-3 text-2xl font-poppins lg:text-[35px]">Philippines</h5>
+                <p class="lg:text-[24px] text-xl font-openSans lg:leading-[45px]">
+                  40 West Evergreen Ave, Suite 101A, Philadelphia, PA 19118
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- Location 3 -->
+          <div class="relative h-full 2xl:h-[435px] group">
+            <img src="./assets/images/ireland.png" alt="Ireland" class="w-full h-full object-cover rounded-lg" />
+            <div
+              class="absolute w-full bg-black bg-opacity-50 flex items-center justify-center rounded-lg h-16 bottom-0 left-0 group-hover:opacity-0 transition-opacity duration-300">
+              <p class="text-white text-[35px] font-normal">Ireland</p>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 w-[70%] h-[65%] p-6 bg-blue-700 bg-opacity-0 flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 group-hover:bg-opacity-50 transition-all duration-300">
+              <div class="text-left text-white">
+                <h5 class="font-normal mb-3 text-2xl font-poppins lg:text-[35px]">Ireland</h5>
+                <p class="lg:text-[24px] text-xl font-openSans lg:leading-[45px]">
+                  40 West Evergreen Ave, Suite 101A, Philadelphia, PA 19118
+                </p>
+              </div>
+            </div>
+
+          </div>
+          <!-- Location 4 -->
+          <div class="relative h-full 2xl:h-[435px] group">
+            <img src="./assets/images/tajmahel.png" alt="India" class="w-full h-full object-cover rounded-lg" />
+            <div
+              class="absolute w-full bg-black bg-opacity-50 flex items-center justify-center rounded-lg h-16 bottom-0 left-0 group-hover:opacity-0 transition-opacity duration-300">
+              <p class="text-white text-[35px] font-normal">India</p>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 w-[70%] h-[65%] p-6 bg-blue-700 bg-opacity-0 flex items-center justify-center rounded-lg opacity-0 group-hover:opacity-100 group-hover:bg-opacity-50 transition-all duration-300">
+              <div class="text-left text-white">
+                <h5 class="font-normal mb-3 text-2xl font-poppins lg:text-[35px]">India</h5>
+                <p class="lg:text-[24px] text-xl font-openSans lg:leading-[45px]">
+                  40 West Evergreen Ave, Suite 101A, Philadelphia, PA 19118
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="bg-footer-gradient bg-cover bg-no-repeat text-gray-300 pt-12 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <img src="./assets/images/footer_bg.png" class="h-auto w-[70%] absolute top-[-53px] left-0" alt="">
+      <div
+        class="footer_layout grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-[auto_1fr] gap-6 2xl:gap-[50px] xl:gap-0 relative">
+        <!-- Brand Section -->
+        <div class="col-span-1 lg:col-span-2 xl:col-span-1">
+          <h2 class="text-[22px] 2xl:text-[30px] leading-[39px] font-poppins font-semibold text-white">Intelegencia</h2>
+          <p class="mt-1 font-sourceSans  2xl:text-[24px] tracking-[0.24px] font-normal">
+            We partner with our clients to form a cross-functional <br> team and
+            turn their visions into reality.
+          </p>
+          <p class="mt-[22px]">
+            <span class="font-bold text-[2xl] 2xl:text-[30px] font-oswald tracking-[0.3px]">Email: </span>
+            <a href="mailto:info@intelegencia.com"
+              class="text-white font-sourceSans font-normal text-[16px] 2xl:text-[24px] tracking-[0.24px] hover:underline">info@intelegencia.com</a>
+          </p>
+          <div class="mt-5 xl:mt-10 2xl:mt-[70px] flex space-x-4">
+            <h5 class="font-semibold text-[2xl] 2xl:text-[30px] font-oswald tracking-[0.3px]">Follow Us :</h5>
+            <div class="flex items-center gap-3">
+              <a href="#" class="text-blue-500 hover:text-blue-400" aria-label="Facebook">
+                <svg class="h-5 w-5" fill="#2494EA" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                  viewBox="0 0 16 16" id="facebook">
+                  <path fill-rule="evenodd" d="M12 5.5H9v-2a1 1 0 0 1 1-1h1V0H9a3 3 0 0 0-3 3v2.5H4V8h2v8h3V8h2l1-2.5z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </a>
+              <a href="#" class="text-blue-400 hover:text-blue-300" aria-label="Twitter">
+                <svg class="h-5 w-5" fill="#2494EA" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                  viewBox="0 0 16 16" id="twitter">
+                  <path
+                    d="M16 3.539a6.839 6.839 0 0 1-1.89.518 3.262 3.262 0 0 0 1.443-1.813 6.555 6.555 0 0 1-2.08.794 3.28 3.28 0 0 0-5.674 2.243c0 .26.022.51.076.748a9.284 9.284 0 0 1-6.761-3.431 3.285 3.285 0 0 0 1.008 4.384A3.24 3.24 0 0 1 .64 6.578v.036a3.295 3.295 0 0 0 2.628 3.223 3.274 3.274 0 0 1-.86.108 2.9 2.9 0 0 1-.621-.056 3.311 3.311 0 0 0 3.065 2.285 6.59 6.59 0 0 1-4.067 1.399c-.269 0-.527-.012-.785-.045A9.234 9.234 0 0 0 5.032 15c6.036 0 9.336-5 9.336-9.334 0-.145-.005-.285-.012-.424A6.544 6.544 0 0 0 16 3.539z">
+                  </path>
+                </svg>
+              </a>
+              <a href="#" class="text-pink-500 hover:text-pink-400" aria-label="Instagram">
+                <svg class="h-5 w-5" fill="#2494EA" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                  viewBox="0 0 16 16" id="instagram">
+                  <path
+                    d="M11 0H5a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h6a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5zm3.5 11c0 1.93-1.57 3.5-3.5 3.5H5c-1.93 0-3.5-1.57-3.5-3.5V5c0-1.93 1.57-3.5 3.5-3.5h6c1.93 0 3.5 1.57 3.5 3.5v6z">
+                  </path>
+                  <path
+                    d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6.5A2.503 2.503 0 0 1 5.5 8c0-1.379 1.122-2.5 2.5-2.5s2.5 1.121 2.5 2.5c0 1.378-1.122 2.5-2.5 2.5z">
+                  </path>
+                  <circle cx="12.3" cy="3.7" r=".533"></circle>
+                </svg>
+              </a>
+              <a href="#" class="text-blue-700 hover:text-blue-600" aria-label="LinkedIn">
+                <svg class="h-5 w-5" fill="#2494EA" xmlns="http://www.w3.org/2000/svg"
+                  enable-background="new 0 0 128 128" viewBox="0 0 128 128" id="linkdin">
+                  <path fill-rule="evenodd"
+                    d="M72.658 52.912c7.188-8.265 15.318-12.457 25.597-11.951 16.723.822 28.493 12.464 29.339 30.639.743 16.008.216 32.072.33 48.108.028 3.848-1.774 5.286-5.467 5.193-4.947-.125-9.912-.239-14.847.049-4.896.286-6.758-1.679-6.674-6.542.193-10.887.074-21.782.053-32.673-.007-2.968.03-5.95-.202-8.904-.715-9.143-6.08-14.661-14.034-14.599-8.175.063-14.789 6.633-14.933 15.374-.211 12.868-.084 25.741-.111 38.612-.019 8.618-.026 8.618-8.535 8.674-18.4.118-18.393.118-18.4-18.286-.007-18.811.13-37.627-.144-56.434-.079-5.446 1.742-7.627 7.172-7.118 3.14.295 6.331.033 9.501.046C70.761 43.142 70.761 43.147 72.658 52.912zM1.921 83.654c0-11.282.207-22.569-.091-33.842-.137-5.272 1.876-7.097 6.958-6.784 4.93.302 9.896.17 14.84.065 3.714-.077 5.393 1.435 5.379 5.27-.088 23.751-.1 47.499-.054 71.25.007 3.802-1.637 5.369-5.376 5.29-5.341-.114-10.692-.156-16.029.021-4.097.137-5.636-1.614-5.592-5.646.13-11.874.046-23.751.046-35.625C1.977 83.654 1.949 83.654 1.921 83.654zM15.182 31.319C6.494 31.282.059 25.299 0 17.203-.06 9.245 6.582 3.029 15.147 3.023c9.32-.005 15.632 5.739 15.595 14.19C30.702 25.819 24.592 31.356 15.182 31.319z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex justify-between gap-6 flex-wrap w-full">
+          <!-- Services Section -->
+          <div class="">
+            <h3 class="text-[22px] 2xl:text-[30px] leading-[39px] font-poppins font-semibold text-white">Services</h3>
+            <ul class="mt-2 space-y-2">
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Data
+                  Analytics</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Blockchain</a>
+              </li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Applications</a>
+              </li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Quality
+                  Engineering</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Automation
+                  & AI</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Cloud
+                  & Infra</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Engineering</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- About Section -->
+          <div class="">
+            <h3 class="text-[22px] 2xl:text-[30px] leading-[39px] font-poppins font-semibold text-white">About
+              Intelegencia</h3>
+            <ul class="mt-2 space-y-2">
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Our
+                  Leadership Team</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">News
+                  & Events</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Our
+                  Locations</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Blog</a>
+              </li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Contact
+                  Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Support Section -->
+          <div class="">
+            <h3 class="text-[22px] 2xl:text-[30px] leading-[39px] font-poppins font-semibold text-white">Support</h3>
+            <ul class="mt-2 space-y-2">
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Terms
+                  of Use</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Privacy</a>
+              </li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Cookie
+                  Policy</a></li>
+              <li><a href="#"
+                  class="2xl:text-[24px] text-[18px] 2xl:leading-[50px] font-openSans tracking-[0.24px] text-white font-normal  hover:underline">Site
+                  Map</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-10 border-t border-gray-700">
+      <p
+        class="2xl:text-[24px] text-[18px] 2xl:leading-[18px] font-openSans tracking-[0.24px] text-white font-normal 2xl:text-left text-center">
+        Copyrights ©2009 - 2020 Intelegencia</p>
+      <p
+        class="mt-5 2xl:text-[20px] text-[16px] 2xl:leading-[18px] font-openSans tracking-[0.24px] text-white font-normal 2xl:text-left text-center">
+        Amazon, Amazon Service Provider Network, Amazon SPN, and Amazon SPN
+        logo are trademarks of Amazon.com, Inc. or its affiliates.
+      </p>
+    </div>
+  </footer>
+</body>
+
+<!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  // Cache the elements
+  const header = document.querySelector("header");
+
+  menuToggle.addEventListener("click", () => {
+    if (mobileMenu.classList.contains("hidden")) {
+      // Open the menu
+      mobileMenu.classList.remove("hidden");
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px"; // Dynamically set height
+    } else {
+      // Close the menu
+      mobileMenu.style.maxHeight = "0px"; // Set height to 0
+      setTimeout(() => mobileMenu.classList.add("hidden"), 300); // Hide after animation
+    }
+  });
+
+  // Listen for scroll events
+  window.addEventListener("scroll", () => {
+    // When scrolled to bottom
+    if (window.scrollY > 100) {
+      // You can adjust this value based on when you want the effect to trigger
+      header.classList.add("glassy-background");
+    } else {
+      header.classList.remove("glassy-background");
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchBtn = document.getElementById("searchBtn");
+    const searchPopup = document.getElementById("searchPopup");
+
+    // Open Popup
+    searchBtn.addEventListener("click", () => {
+      searchPopup.classList.remove("hidden");
+      setTimeout(() => {
+        searchPopup.classList.remove("opacity-0", "scale-90");
+        searchPopup.classList.add("opacity-100", "scale-100");
+      }, 10); // Delay for smooth animation
+    });
+
+    // Close Popup on Overlay Click
+    searchPopup.addEventListener("click", (e) => {
+      if (e.target === searchPopup) {
+        searchPopup.classList.remove("opacity-100", "scale-100");
+        searchPopup.classList.add("opacity-0", "scale-90");
+        setTimeout(() => {
+          searchPopup.classList.add("hidden");
+        }, 300); // Match animation duration
+      }
+    });
+  });
+</script>
+
+</html>
